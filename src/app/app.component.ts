@@ -24,18 +24,35 @@ export class AppComponent implements OnInit {
   editTodos: ToDo[] = [];
   userList: User[];
   editUsers: User[] = [];
+  isShowingTodos;
+  isShowingUsers;
 
   ngOnInit(): void {
     this.todoService.getToDos()
       .subscribe(todos => {
         this.todosList = todos;
+        this.isShowingTodos = true;
         console.log(todos);
       });
       this.userService.getUsers()
       .subscribe(users => {
         this.userList = users;
+        this.isShowingUsers = false;
         console.log(users);
       });
+  }
+
+  showUsers() {
+    this.isShowingUsers = true;
+    this.isShowingTodos = false;
+    document.getElementById('showUserButton').classList.add('mat-primary');
+    document.getElementById('showTodoButton').classList.remove('mat-primary');
+  }
+  showTodos() {
+    this.isShowingUsers = false;
+    this.isShowingTodos = true;
+    document.getElementById('showUserButton').classList.remove('mat-primary');
+    document.getElementById('showTodoButton').classList.add('mat-primary');
   }
 
   createToDo() {

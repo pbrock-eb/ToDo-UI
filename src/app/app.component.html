@@ -1,8 +1,40 @@
 <div class="row">
   <div class="col-md-2"></div>
   <div class="col-md-8">
-
-    <div class="todos" *ngIf="todosList">
+    <div class="todos" >
+      <button mat-raised-button color="primary" id="showTodoButton" (click)="showTodos()">ToDos</button>
+      <button mat-raised-button id="userButton" id="showUserButton" (click)="showUsers()">Users</button>
+    </div>
+    <div class="users" *ngIf="userList && isShowingUsers">
+        <mat-card>
+            <mat-card-header>
+              <mat-card-title>Add a new User</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              <form>
+                <div class="form-row">
+                  <mat-form-field class="col-md-3">
+                    <input matInput name="fName" id="fName" [(ngModel)]="newUser.fName" placeholder="First Name">
+                  </mat-form-field>
+                  <mat-form-field class="col-md-4">
+                    <input matInput name="lName" id="lName" [(ngModel)]="newUser.lName" placeholder="Last Name">
+                  </mat-form-field>
+                  <div class="col-md-2"><button mat-raised-button type="submit" class="mat-button" (click)="createUser()">Add</button></div>
+                </div>
+              </form>
+            </mat-card-content>
+          </mat-card>
+          <mat-list>
+              <h2 mat-subheader>Users</h2>
+            <mat-list-item *ngFor="let user of userList">
+              <mat-icon mat-list-icon>description</mat-icon>
+              <h3 mat-line>{{user.fName}} {{user.lName}}</h3>
+              <p mat-line>Added: {{user.dateCreated}}</p>
+            </mat-list-item>
+          </mat-list>
+    </div>
+    <div class="todos" *ngIf="todosList && isShowingTodos">
+      
       <mat-card>
         <mat-card-header>
           <mat-card-title>Add a new To Do</mat-card-title>
@@ -19,11 +51,12 @@
               <mat-form-field class="col-md-3">
                 <input matInput name="dateDue" id="dateDue" [(ngModel)]="newTodo.dateDue" placeholder="Due Date">
               </mat-form-field>
-              <div class="col-md-2"><button mat-button type="submit" class="mat-button" (click)="createToDo()">Add</button></div>
+              <div class="col-md-2"><button mat-raised-button type="submit" class="mat-button" (click)="createToDo()">Add</button></div>
             </div>
           </form>
         </mat-card-content>
       </mat-card>
+
       <mat-list>
         <h2 mat-subheader>To Do</h2>
 
@@ -36,9 +69,9 @@
             <p mat-line>{{todo.description}}</p>
             <p mat-line>Date Due: {{todo.dateDue}}</p>
             <div class="list-action-row" mat-line>
-              <button mat-button class="mat-button" (click)="doneTodo(todo)">Complete</button>
-              <button mat-button (click)="editTodo(todo)">Edit</button>
-              <button mat-button (click)="deleteTodo(todo)">Delete</button>
+              <button mat-raised-button class="mat-button" (click)="doneTodo(todo)">Complete</button>
+              <button mat-raised-button (click)="editTodo(todo)">Edit</button>
+              <button mat-raised-button (click)="deleteTodo(todo)">Delete</button>
             </div>
           </mat-list-item>
 
@@ -60,7 +93,7 @@
                 <input matInput type="dateDue" name="dateDue" id="dateDue" (keypress)="submitTodo($event, todo)" [(ngModel)]="todo.dateDue" placeholder="Date Due" />
                 </mat-form-field>
               </div>
-              <div mat-line><button mat-button (click)="editTodo(todo)">Submit</button></div>
+              <div mat-line><button mat-raised-button (click)="editTodo(todo)">Submit</button></div>
             </mat-list-item>
           </ng-template>
 
@@ -79,20 +112,6 @@
           </div>
         </mat-list-item>
       </mat-list>
-  
-      <form>
-        <div class="form-row">
-          <mat-form-field class="col-md-5">
-            <input type="text" name="fName" id="fName" [(ngModel)]="newUser.fName" placeholder="First Name" matInput>
-          </mat-form-field>
-          <mat-form-field class="col-md-5">
-            <input name="lName" id="lName" [(ngModel)]="newUser.lName" placeholder="Last Name" matInput>
-          </mat-form-field>
-          <div class="col-md-2">
-            <button type="submit" mat-button class="mat-button" (click)="createUser()">Add</button>
-          </div>
-        </div>
-      </form>
   
     <div class="col-md-2"></div>
   </div>

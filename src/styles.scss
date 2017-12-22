@@ -4,18 +4,21 @@
 /* Start Material Theme */
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 @import url('../node_modules/@angular/material/prebuilt-themes/indigo-pink.css');
-.mat-card.todo-card{
-    margin: 0 0 20px;
-    .mat-card-avatar{
-        .fa{
-            opacity: .3;
+.todos{
+    .mat-card.todo-card{
+        margin: 0 0 20px;
+        .mat-card-avatar{
+            .fa{
+                opacity: .3;
+            }
         }
     }
-}
-.mat-list-item-content{
-    .mat-form-field{
-        width:100%;
+    .mat-list-item-content{
+        .mat-form-field{
+            width:100%;
+        }
+    }
+    .mat-raised-button{
+        margin:1px;
     }
 }
-
-
