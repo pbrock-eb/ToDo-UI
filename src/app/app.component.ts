@@ -38,7 +38,6 @@ export class AppComponent implements OnInit {
       });
   }
 
-
   createToDo() {
     this.newTodo.status = 'Incomplete';
     this.todoService.createTodo(this.newTodo)
