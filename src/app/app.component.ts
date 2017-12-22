@@ -157,7 +157,7 @@ export class AppComponent implements OnInit {
     }
   }
   deleteUser(user: User) {
-    this.todoService.deleteTodo(user._id).subscribe(res => {
+    this.userService.deleteUser(user._id).subscribe(res => {
       this.userList.splice(this.userList.indexOf(user), 1);
     });
   }

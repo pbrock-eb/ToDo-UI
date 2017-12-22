@@ -30,6 +30,7 @@
               <mat-icon mat-list-icon>description</mat-icon>
               <h3 mat-line>{{user.fName}} {{user.lName}}</h3>
               <p mat-line>Added: {{user.dateCreated}}</p>
+              <button mat-raised-button type="submit" class="mat-button" (click)="deleteUser(user)">Delete</button>
             </mat-list-item>
           </mat-list>
     </div>
