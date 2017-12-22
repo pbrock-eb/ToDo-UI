@@ -40,7 +40,6 @@ export class AppComponent implements OnInit {
 
 
   createToDo() {
-    console.log(this.newTodo);
     this.newTodo.status = 'Incomplete';
     this.todoService.createTodo(this.newTodo)
       .subscribe((res) => {
@@ -50,7 +49,6 @@ export class AppComponent implements OnInit {
   }
 
   editTodo(todo: ToDo) {
-    console.log(todo);
     if (this.todosList.includes(todo)) {
       if (!this.editTodos.includes(todo)) {
         this.editTodos.push(todo);

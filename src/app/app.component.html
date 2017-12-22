@@ -5,14 +5,15 @@
     <div class="todos" *ngIf="todosList">
       
         <mat-list>
-            <h3 mat-subheader>To Do</h3>
+            <h2 mat-subheader>To Do</h2>
 
             <ng-container ngProjectAs="mat-list-item" *ngFor="let todo of todosList | todoFilter: 'status' : 'Incomplete'; let i=index">
 
               <mat-list-item *ngIf="!editTodos.includes(todo); else editTD">
                 <mat-icon mat-list-icon>description</mat-icon>
-                <h4 mat-line>{{todo.title}}</h4>
-                <p mat-line> Added {{todo.date | date}}: {{todo.description}}</p>
+                <h3 mat-line>{{todo.title}}</h3>
+                <p mat-line>Added {{todo.date}}</p>
+                <p mat-line>{{todo.description}}</p>
                 <p mat-line>Date Due: {{todo.dateDue}}</p>
                 <div class="list-action-row" mat-line>
                   <button mat-button class="mat-button" (click)="doneTodo(todo)">Complete</button>
@@ -24,23 +25,33 @@
               <ng-template #editTD ngProjectAs="mat-list-item">
                   <mat-list-item>
                       <mat-icon mat-list-icon>description</mat-icon>
-                      <div mat-line><input type="text" name="title" id="title" (keypress)="submitTodo($event, todo)" [(ngModel)]="todo.title" placeholder="Title" class="form-control"></div>
-                      <div mat-line><input type="text" name="description" id="description" (keypress)="submitTodo($event, todo)" [(ngModel)]="todo.description" placeholder="Description"
-                        class="form-control"></div>
-                        <div mat-line><input type="dateDue" name="dateDue" id="dateDue" (keypress)="submitTodo($event, todo)" [(ngModel)]="todo.dateDue" placeholder="Date Due" class="form-control"></div>
-                      <div class="list-action-row" mat-line>
-                          <button mat-button (click)="editTodo(todo)">Submit</button>
+                      <div mat-line>
+                        <mat-form-field>
+                          <input matInput type="text" name="title" id="title" (keypress)="submitTodo($event, todo)" [(ngModel)]="todo.title" placeholder="Title" />
+                        </mat-form-field>
                       </div>
+                      <div mat-line>
+                        <mat-form-field>
+                        <input matInput type="text" name="description" id="description" (keypress)="submitTodo($event, todo)" [(ngModel)]="todo.description" placeholder="Description" />
+                        </mat-form-field>
+                      </div>
+                      <div mat-line>
+                        <mat-form-field>
+                        <input matInput type="dateDue" name="dateDue" id="dateDue" (keypress)="submitTodo($event, todo)" [(ngModel)]="todo.dateDue" placeholder="Date Due" />
+                        </mat-form-field>
+                      </div>
+                      <div mat-line><button mat-button (click)="editTodo(todo)">Submit</button></div>
+                      
                   </mat-list-item>
                 </ng-template>
 
             </ng-container>
 
             <mat-divider></mat-divider>
-            <h3 mat-subheader>Completed</h3>
+            <h2 mat-subheader>Completed</h2>
             <mat-list-item *ngFor="let todo of todosList | todoFilter: 'status' : 'Complete'; let i=index">
                 <mat-icon mat-list-icon>description</mat-icon>
-                <h4 mat-line>{{todo.title}}</h4>
+                <h3 mat-line>{{todo.title}}</h3>
                 <p mat-line> Added {{todo.date | date}}: {{todo.description}}</p>
                 <p mat-line>Date Due: {{todo.dateDue}}</p>
                 <div class="list-action-row" mat-line>
@@ -49,34 +60,33 @@
               </mat-list-item>
           </mat-list>
     <form>
-      <div class="form-row">
-
-        <div class="col-md-4">
-          <input type="text" name="title" id="title" [(ngModel)]="newTodo.title" placeholder="Title" class="form-control">
-        </div>
-        <div class="col-md-4">
-          <input name="description" id="description" [(ngModel)]="newTodo.description" placeholder="Description" class="form-control">
-        </div>
-        <div class="col-md-2">
-            <input name="dateDue" id="dateDue" [(ngModel)]="newTodo.dateDue" placeholder="Due Date" class="form-control">
+        <div class="form-row">
+          <mat-form-field class="col-md-3">
+            <input matInput name="title" id="title" [(ngModel)]="newTodo.title" placeholder="Title">
+          </mat-form-field>
+          <mat-form-field class="col-md-4">
+            <input matInput name="description" id="description" [(ngModel)]="newTodo.description" placeholder="Description">
+          </mat-form-field>
+          <mat-form-field class="col-md-3">
+            <input matInput name="dateDue" id="dateDue" [(ngModel)]="newTodo.dateDue" placeholder="Due Date">
+          </mat-form-field>
+          <div class="col-md-2">
+            <button mat-button type="submit" class="mat-button" (click)="createToDo()">Add</button>
           </div>
-        <div class="col-md-2">
-          <button type="submit" class="btn btn-primary" (click)="createToDo()">Add</button>
         </div>
-      </div>
     </form>
   
   <form>
       <div class="form-row">
 
-        <div class="col-md-5">
-          <input type="text" name="fName" id="fName" [(ngModel)]="newUser.fName" placeholder="First Name" class="form-control">
-        </div>
-        <div class="col-md-5">
-          <input name="lName" id="lName" [(ngModel)]="newUser.lName" placeholder="Last Name" class="form-control">
-        </div>
+        <mat-form-field class="col-md-5">
+          <input type="text" name="fName" id="fName" [(ngModel)]="newUser.fName" placeholder="First Name" matInput>
+        </mat-form-field>
+        <mat-form-field class="col-md-5">
+          <input name="lName" id="lName" [(ngModel)]="newUser.lName" placeholder="Last Name" matInput>
+        </mat-form-field>
         <div class="col-md-2">
-          <button type="submit" class="btn btn-primary" (click)="createUser()">Add</button>
+          <button type="submit" mat-button class="mat-button" (click)="createUser()">Add</button>
         </div>
       </div>
     </form>

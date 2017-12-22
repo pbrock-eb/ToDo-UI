@@ -5,13 +5,16 @@ import { UserService} from './services/user.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {
   MatButtonModule,
   MatMenuModule,
   MatToolbarModule,
   MatIconModule,
   MatCardModule,
-  MatListModule
+  MatListModule,
+  MatInputModule,
+  MatFormFieldModule
 } from '@angular/material';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
@@ -26,11 +29,14 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     FormsModule,
     HttpClientModule,
     MatButtonModule,
+    MatFormFieldModule,
     MatMenuModule,
     MatToolbarModule,
     MatIconModule,
     MatCardModule,
     MatListModule,
+    MatInputModule,
+    NoopAnimationsModule,
     NgbModule.forRoot()
   ],
   providers: [
