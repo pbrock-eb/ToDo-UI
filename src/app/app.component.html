@@ -3,7 +3,27 @@
   <div class="col-md-8">
 
     <div class="todos" *ngIf="todosList">
-      
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Add a new To Do</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <form>
+            <div class="form-row">
+              <mat-form-field class="col-md-3">
+                <input matInput name="title" id="title" [(ngModel)]="newTodo.title" placeholder="Title">
+              </mat-form-field>
+              <mat-form-field class="col-md-4">
+                <input matInput name="description" id="description" [(ngModel)]="newTodo.description" placeholder="Description">
+              </mat-form-field>
+              <mat-form-field class="col-md-3">
+                <input matInput name="dateDue" id="dateDue" [(ngModel)]="newTodo.dateDue" placeholder="Due Date">
+              </mat-form-field>
+              <div class="col-md-2"><button mat-button type="submit" class="mat-button" (click)="createToDo()">Add</button></div>
+            </div>
+          </form>
+        </mat-card-content>
+      </mat-card>
       <mat-list>
         <h2 mat-subheader>To Do</h2>
 
@@ -59,22 +79,6 @@
           </div>
         </mat-list-item>
       </mat-list>
-      <form>
-        <div class="form-row">
-          <mat-form-field class="col-md-3">
-            <input matInput name="title" id="title" [(ngModel)]="newTodo.title" placeholder="Title">
-          </mat-form-field>
-          <mat-form-field class="col-md-4">
-            <input matInput name="description" id="description" [(ngModel)]="newTodo.description" placeholder="Description">
-          </mat-form-field>
-          <mat-form-field class="col-md-3">
-            <input matInput name="dateDue" id="dateDue" [(ngModel)]="newTodo.dateDue" placeholder="Due Date">
-          </mat-form-field>
-          <div class="col-md-2">
-            <button mat-button type="submit" class="mat-button" (click)="createToDo()">Add</button>
-          </div>
-        </div>
-      </form>
   
       <form>
         <div class="form-row">
