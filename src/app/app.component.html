@@ -23,26 +23,26 @@
           </mat-list-item>
 
           <ng-template #editTD ngProjectAs="mat-list-item">
-              <mat-list-item>
-                  <mat-icon mat-list-icon>description</mat-icon>
-                  <div mat-line>
-                    <mat-form-field>
-                      <input matInput type="text" name="title" id="title" (keypress)="submitTodo($event, todo)" [(ngModel)]="todo.title" placeholder="Title" />
-                    </mat-form-field>
-                  </div>
-                  <div mat-line>
-                    <mat-form-field>
-                    <input matInput type="text" name="description" id="description" (keypress)="submitTodo($event, todo)" [(ngModel)]="todo.description" placeholder="Description" />
-                    </mat-form-field>
-                  </div>
-                  <div mat-line>
-                    <mat-form-field>
-                    <input matInput type="dateDue" name="dateDue" id="dateDue" (keypress)="submitTodo($event, todo)" [(ngModel)]="todo.dateDue" placeholder="Date Due" />
-                    </mat-form-field>
-                  </div>
-                  <div mat-line><button mat-button (click)="editTodo(todo)">Submit</button></div>
-              </mat-list-item>
-            </ng-template>
+            <mat-list-item>
+              <mat-icon mat-list-icon>description</mat-icon>
+              <div mat-line>
+                <mat-form-field>
+                  <input matInput type="text" name="title" id="title" (keypress)="submitTodo($event, todo)" [(ngModel)]="todo.title" placeholder="Title" />
+                </mat-form-field>
+              </div>
+              <div mat-line>
+                <mat-form-field>
+                <input matInput type="text" name="description" id="description" (keypress)="submitTodo($event, todo)" [(ngModel)]="todo.description" placeholder="Description" />
+                </mat-form-field>
+              </div>
+              <div mat-line>
+                <mat-form-field>
+                <input matInput type="dateDue" name="dateDue" id="dateDue" (keypress)="submitTodo($event, todo)" [(ngModel)]="todo.dateDue" placeholder="Date Due" />
+                </mat-form-field>
+              </div>
+              <div mat-line><button mat-button (click)="editTodo(todo)">Submit</button></div>
+            </mat-list-item>
+          </ng-template>
 
         </ng-container>
 
