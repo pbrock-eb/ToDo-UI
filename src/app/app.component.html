@@ -6,17 +6,36 @@
       
         <mat-list>
             <h3 mat-subheader>To Do</h3>
-            <mat-list-item *ngFor="let todo of todosList | todoFilter: 'status' : 'Incomplete'; let i=index">
-              <mat-icon mat-list-icon>description</mat-icon>
-              <h4 mat-line>{{todo.title}}</h4>
-              <p mat-line> Added {{todo.date | date}}: {{todo.description}}</p>
-              <p mat-line>Date Due: {{todo.dateDue}}</p>
-              <div class="list-action-row" mat-line>
-                <button mat-button class="mat-button" (click)="doneTodo(todo)">Complete</button>
-                <button mat-button>Edit</button>
-                <button mat-button (click)="deleteTodo(todo)">Delete</button>
-              </div>
-            </mat-list-item>
+
+            <ng-container ngProjectAs="mat-list-item" *ngFor="let todo of todosList | todoFilter: 'status' : 'Incomplete'; let i=index">
+
+              <mat-list-item *ngIf="!editTodos.includes(todo); else editTD">
+                <mat-icon mat-list-icon>description</mat-icon>
+                <h4 mat-line>{{todo.title}}</h4>
+                <p mat-line> Added {{todo.date | date}}: {{todo.description}}</p>
+                <p mat-line>Date Due: {{todo.dateDue}}</p>
+                <div class="list-action-row" mat-line>
+                  <button mat-button class="mat-button" (click)="doneTodo(todo)">Complete</button>
+                  <button mat-button (click)="editTodo(todo)">Edit</button>
+                  <button mat-button (click)="deleteTodo(todo)">Delete</button>
+                </div>
+              </mat-list-item>
+
+              <ng-template #editTD ngProjectAs="mat-list-item">
+                  <mat-list-item>
+                      <mat-icon mat-list-icon>description</mat-icon>
+                      <div mat-line><input type="text" name="title" id="title" (keypress)="submitTodo($event, todo)" [(ngModel)]="todo.title" placeholder="Title" class="form-control"></div>
+                      <div mat-line><input type="text" name="description" id="description" (keypress)="submitTodo($event, todo)" [(ngModel)]="todo.description" placeholder="Description"
+                        class="form-control"></div>
+                        <div mat-line><input type="dateDue" name="dateDue" id="dateDue" (keypress)="submitTodo($event, todo)" [(ngModel)]="todo.dateDue" placeholder="Date Due" class="form-control"></div>
+                      <div class="list-action-row" mat-line>
+                          <button mat-button (click)="editTodo(todo)">Submit</button>
+                      </div>
+                  </mat-list-item>
+                </ng-template>
+
+            </ng-container>
+
             <mat-divider></mat-divider>
             <h3 mat-subheader>Completed</h3>
             <mat-list-item *ngFor="let todo of todosList | todoFilter: 'status' : 'Complete'; let i=index">

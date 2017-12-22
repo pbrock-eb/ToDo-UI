@@ -86,11 +86,11 @@ export class AppComponent implements OnInit {
     });
   }
 
-  /* submitTodo(event, todo: ToDo) {
+  submitTodo(event, todo: ToDo) {
     if (event.keyCode === 13) {
       this.editTodo(todo);
     }
-  } */
+  }
 
   deleteTodo(todo: ToDo) {
     this.todoService.deleteTodo(todo._id).subscribe(res => {
