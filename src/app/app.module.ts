@@ -14,7 +14,9 @@ import {
   MatCardModule,
   MatListModule,
   MatInputModule,
-  MatFormFieldModule
+  MatFormFieldModule,
+  MatSelectModule,
+  MatDialogModule
 } from '@angular/material';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
@@ -37,6 +39,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     MatListModule,
     MatInputModule,
     NoopAnimationsModule,
+    MatSelectModule,
+    MatDialogModule,
     NgbModule.forRoot()
   ],
   providers: [
