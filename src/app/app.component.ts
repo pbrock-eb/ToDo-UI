@@ -3,7 +3,9 @@ import { TodoService } from './services/todo.service';
 import { UserService } from './services/user.service';
 import User from './models/user.model';
 import ToDo from './models/todo.model';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+
 
 @Component({
   selector: 'app-root',
@@ -14,7 +16,8 @@ export class AppComponent implements OnInit {
 
   constructor(
     private todoService: TodoService,
-    private userService: UserService
+    private userService: UserService,
+    public dialog: MatDialog
   ) { }
 
   public newTodo: ToDo = new ToDo();
@@ -32,13 +35,11 @@ export class AppComponent implements OnInit {
       .subscribe(todos => {
         this.todosList = todos;
         this.isShowingTodos = true;
-        console.log(todos);
       });
       this.userService.getUsers()
       .subscribe(users => {
         this.userList = users;
         this.isShowingUsers = false;
-        console.log(users);
       });
   }
 
@@ -161,4 +162,34 @@ export class AppComponent implements OnInit {
       this.userList.splice(this.userList.indexOf(user), 1);
     });
   }
+
+  openDialog(todo): void {
+    const dialogRef = this.dialog.open(TodoDialogComponent, {
+      width: '500px',
+      data: {
+        todo: todo,
+        todoList: this.todosList
+      }
+    });
+  }
+}
+
+@Component({
+  selector: 'app-todo-dialog',
+  templateUrl: './templates/todo-dialog.html'
+})
+export class TodoDialogComponent {
+
+  constructor(
+    public dialogRef: MatDialogRef<TodoDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any) { }
+    onNoClick(): void {
+      this.dialogRef.close();
+    }
+    editTodo(todo, todoList) {
+      AppComponent.prototype.todosList = todoList;
+      AppComponent.prototype.editTodos = [];
+      AppComponent.prototype.editTodo(todo);
+      this.dialogRef.close();
+    }
 }

@@ -1,0 +1,21 @@
+<mat-list>
+    <mat-list-item>
+        <mat-icon mat-list-icon>description</mat-icon>
+        <div mat-line>
+            <mat-form-field>
+            <input matInput type="text" name="title" id="title" [(ngModel)]="data.todo.title" placeholder="Title" />
+            </mat-form-field>
+        </div>
+        <div mat-line>
+            <mat-form-field>
+            <input matInput type="text" name="description" id="description" [(ngModel)]="data.todo.description" placeholder="Description" />
+            </mat-form-field>
+        </div>
+        <div mat-line>
+            <mat-form-field>
+            <input matInput type="dateDue" name="dateDue" id="dateDue" [(ngModel)]="data.todo.dateDue" placeholder="Date Due" />
+            </mat-form-field>
+        </div>
+        <div mat-line><button mat-raised-button (click)="editTodo(data.todo, data.todoList)">Submit</button></div>
+    </mat-list-item>
+</mat-list>

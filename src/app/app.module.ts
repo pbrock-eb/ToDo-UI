@@ -4,7 +4,7 @@ import { TodoService, ToDoFilterPipe } from './services/todo.service';
 import { UserService} from './services/user.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { AppComponent } from './app.component';
+import { AppComponent, TodoDialogComponent } from './app.component';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {
   MatButtonModule,
@@ -24,7 +24,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
     AppComponent,
-    ToDoFilterPipe
+    ToDoFilterPipe,
+    TodoDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -47,6 +48,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     TodoService,
     UserService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [TodoDialogComponent]
 })
 export class AppModule {}
