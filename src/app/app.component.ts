@@ -69,6 +69,7 @@ export class AppComponent implements OnInit {
     if (this.todosList.includes(todo)) {
       if (!this.editTodos.includes(todo)) {
         this.editTodos.push(todo);
+        console.log('1');
       }else {
         this.editTodos.splice(this.editTodos.indexOf(todo), 1);
         this.todoService.editTodo(todo).subscribe(res => {
@@ -167,8 +168,7 @@ export class AppComponent implements OnInit {
     const dialogRef = this.dialog.open(TodoDialogComponent, {
       width: '500px',
       data: {
-        todo: todo,
-        todoList: this.todosList
+        todo: todo
       }
     });
   }
@@ -182,14 +182,17 @@ export class TodoDialogComponent {
 
   constructor(
     public dialogRef: MatDialogRef<TodoDialogComponent>,
+    private todoService: TodoService,
     @Inject(MAT_DIALOG_DATA) public data: any) { }
     onNoClick(): void {
       this.dialogRef.close();
     }
-    editTodo(todo, todoList) {
-      AppComponent.prototype.todosList = todoList;
-      AppComponent.prototype.editTodos = [];
-      AppComponent.prototype.editTodo(todo);
+    editTodo(todo) {
+      this.todoService.editTodo(todo).subscribe(res => {
+        console.log('Update Succesful');
+      }, err => {
+        console.error('Update Unsuccesful');
+      });
       this.dialogRef.close();
     }
 }
