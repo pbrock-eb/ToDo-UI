@@ -25,7 +25,7 @@ export class AppComponent implements OnInit {
   title = 'app';
   todosList = new Array();
   editTodos: ToDo[] = [];
-  userList: User[];
+  userList = new Array();
   editUsers: User[] = [];
   isShowingTodos;
   isShowingUsers;
@@ -137,7 +137,7 @@ export class AppComponent implements OnInit {
     if (this.isNewUser(this.newUser)) {
       this.userService.createUser(this.newUser)
           .subscribe((res) => {
-            this.userList.push(res.data);
+            this.userList = res.data;
               this.newUser = new User();
           });
         }

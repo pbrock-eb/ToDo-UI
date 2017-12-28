@@ -19,6 +19,7 @@ export class UserService {
 
   createUser(user: User): Observable<any> {
     // returns the observable of http post request
+    console.log('create user')
     console.log(`${this.userUrl}`);
     return this.http.post(`${this.userUrl}`, user);
   }
@@ -27,7 +28,7 @@ export class UserService {
     return this.http.get(this.userUrl)
     .map(res  => {
       // Maps the response object sent from the server
-      return res['data'].docs as User[];
+      return res['data'] as User[];
     });
   }
 

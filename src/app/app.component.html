@@ -29,7 +29,7 @@
             <mat-list-item *ngFor="let user of userList">
               <mat-icon mat-list-icon>description</mat-icon>
               <h3 mat-line>{{user.fName}} {{user.lName}}</h3>
-              <p mat-line>Added: {{user.dateCreated}}</p>
+              <p mat-line>Added: {{user.dateCreated | date:'MM/dd/yyyy'}}</p>
               <button mat-raised-button type="submit" class="mat-button" (click)="deleteUser(user)">Delete</button>
             </mat-list-item>
           </mat-list>
