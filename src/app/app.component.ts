@@ -61,8 +61,11 @@ export class AppComponent implements OnInit {
     console.log(this.newTodo);
     this.todoService.createTodo(this.newTodo)
       .subscribe((res) => {
+        console.log('result');
+        console.log(res.data);
+        console.log('------');
         console.log(this.todosList);
-        this.todosList.push(res.data);
+        this.todosList = res.data;
         this.newTodo = new ToDo();
       });
   }
