@@ -58,6 +58,7 @@ export class AppComponent implements OnInit {
 
   createToDo() {
     this.newTodo.status = 'Incomplete';
+    console.log(this.newTodo);
     this.todoService.createTodo(this.newTodo)
       .subscribe((res) => {
         this.todosList.push(res.data);
@@ -69,7 +70,6 @@ export class AppComponent implements OnInit {
     if (this.todosList.includes(todo)) {
       if (!this.editTodos.includes(todo)) {
         this.editTodos.push(todo);
-        console.log('1');
       }else {
         this.editTodos.splice(this.editTodos.indexOf(todo), 1);
         this.todoService.editTodo(todo).subscribe(res => {

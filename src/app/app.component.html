@@ -50,12 +50,17 @@
                 <input matInput name="description" id="description" [(ngModel)]="newTodo.description" placeholder="Description">
               </mat-form-field>
               <mat-form-field class="col-md-2">
-                  <mat-select placeholder="User">
+                  <mat-select placeholder="User" name="user" id="user" [(ngModel)]="newTodo.user" >
                     <mat-option *ngFor="let user of userList" [value]="user">
                       {{user.fName}}  {{user.lName}}
                     </mat-option>
                   </mat-select>
               </mat-form-field>
+              <!-- <select placeholder="User" name="user" id="user" [(ngModel)]="user" >
+                  <option *ngFor="let user of userList" [value]="user">
+                    {{user.fName}}  {{user.lName}}
+                  </option>
+                </select> -->
               <mat-form-field class="col-md-2">
                 <input matInput name="dateDue" id="dateDue" [(ngModel)]="newTodo.dateDue" placeholder="Due Date">
               </mat-form-field>
@@ -74,6 +79,7 @@
             <mat-icon mat-list-icon>description</mat-icon>
             <h3 mat-line>{{todo.title}}</h3>
             <p mat-line>Added {{todo.date}}</p>
+            <p mat-line >Asigned to: {{todo.user.fName}} {{todo.user.lName}}</p>
             <p mat-line>{{todo.description}}</p>
             <p mat-line>Date Due: {{todo.dateDue}}</p>
             <div class="list-action-row" mat-line>
