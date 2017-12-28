@@ -49,23 +49,18 @@
               <mat-form-field class="col-md-3">
                 <input matInput name="description" id="description" [(ngModel)]="newTodo.description" placeholder="Description">
               </mat-form-field>
-              <!-- <mat-form-field class="col-md-2">
+              <mat-form-field class="col-md-2">
                   <mat-select placeholder="User" name="user" id="user" [(ngModel)]="newTodo.user" >
                     <mat-option *ngFor="let user of userList" [value]="user">
                       {{user.fName}}  {{user.lName}}
                     </mat-option>
                   </mat-select>
-              </mat-form-field> -->
-              <!-- <select placeholder="User" name="user" id="user" [(ngModel)]="user" >
-                  <option *ngFor="let user of userList" [value]="user">
-                    {{user.fName}}  {{user.lName}}
-                  </option>
-                </select> -->
-                <mat-form-field>
-                  <input matInput [matDatepicker]="dateDue" name="dateDue" id="dateDue" [(ngModel)]="newTodo.dateDue" placeholder="Due Date">
-                  <mat-datepicker-toggle matSuffix [for]="dateDue"></mat-datepicker-toggle>
-                  <mat-datepicker #dateDue></mat-datepicker>
-                </mat-form-field>
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput [matDatepicker]="dateDue" name="dateDue" id="dateDue" [(ngModel)]="newTodo.dateDue" placeholder="Due Date">
+                <mat-datepicker-toggle matSuffix [for]="dateDue"></mat-datepicker-toggle>
+                <mat-datepicker #dateDue></mat-datepicker>
+              </mat-form-field>
               <div class="col-md-2"><button mat-raised-button type="submit" class="mat-button" (click)="createToDo()">Add</button></div>
             </div>
           </form>
@@ -81,7 +76,7 @@
             <mat-icon mat-list-icon>description</mat-icon>
             <h3 mat-line>{{todo.title}}</h3>
             <p mat-line>Added: {{todo.dateCreated | date:'MM/dd/yyyy'}}</p>
-            <!-- <p mat-line >Asigned to: {{todo.user.fName}} {{todo.user.lName}}</p> -->
+            <p mat-line >Assigned to: {{todo.user.fName}} {{todo.user.lName}}</p>
             <p mat-line>{{todo.description}}</p>
             <p mat-line>Date Due: {{todo.dateDue | date:'MM/dd/yyyy'}}</p>
             <div class="list-action-row" mat-line>
@@ -98,6 +93,15 @@
               <div mat-line>
                 <mat-form-field>
                   <input matInput type="text" name="title" id="title" (keypress)="submitTodo($event, todo)" [(ngModel)]="todo.title" placeholder="Title" />
+                </mat-form-field>
+              </div>
+              <div mat-line>
+                <mat-form-field>
+                    <mat-select placeholder="User" name="user" id="user" [(ngModel)]="todo.user" >
+                      <mat-option *ngFor="let user of userList" [value]="user">
+                        {{todo.user.fName}}  {{todo.user.lName}}
+                      </mat-option>
+                    </mat-select>
                 </mat-form-field>
               </div>
               <div mat-line>

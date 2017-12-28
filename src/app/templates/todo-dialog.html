@@ -13,6 +13,15 @@
         </div>
         <div mat-line>
             <mat-form-field>
+                <mat-select placeholder="User" name="user" id="user" [(ngModel)]="data.todo.user" >
+                    <mat-option *ngFor="let user of data.userList" [value]="user">
+                    {{data.todo.user.fName}}  {{data.todo.user.lName}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div mat-line>
+            <mat-form-field>
             <input matInput type="dateDue" name="dateDue" id="dateDue" [(ngModel)]="data.todo.dateDue" placeholder="Date Due" />
             </mat-form-field>
         </div>

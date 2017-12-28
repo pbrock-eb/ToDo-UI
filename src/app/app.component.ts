@@ -182,6 +182,7 @@ export class TodoDialogComponent {
   constructor(
     public dialogRef: MatDialogRef<TodoDialogComponent>,
     private todoService: TodoService,
+    private userService: UserService,
     @Inject(MAT_DIALOG_DATA) public data: any) { }
     onNoClick(): void {
       this.dialogRef.close();
