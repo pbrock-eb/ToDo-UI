@@ -36,7 +36,6 @@ export class AppComponent implements OnInit {
         this.todosList = todos;
         this.isShowingTodos = true;
       });
-      console.log(this.todosList);
       this.userService.getUsers()
       .subscribe(users => {
         this.userList = users;

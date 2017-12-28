@@ -1,7 +1,7 @@
 import User from './user.model';
 
 class ToDo {
-    _id: string;
+    id: string;
     title: string;
     description: string;
     dateCreated: Date;
@@ -11,6 +11,7 @@ class ToDo {
 
     constructor(
     ) {
+        this.id = '';
         this.title = '';
         this.description = '';
         this.dateCreated = new Date();

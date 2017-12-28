@@ -24,7 +24,6 @@ export class UserService {
   }
 
   getUsers(): Observable<User[]> {
-    console.log(User.length);
     return this.http.get(this.userUrl)
     .map(res  => {
       // Maps the response object sent from the server

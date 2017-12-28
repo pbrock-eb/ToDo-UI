@@ -29,9 +29,8 @@ export class TodoService {
 
   // Create todo, takes a ToDo Object
   createTodo(todo: ToDo): Observable<any> {
-    // returns the observable of http post request
-    console.log(`${this.todoUrl}`);
     console.log(todo);
+    // returns the observable of http post request
     return this.http.post(`${this.todoUrl}`, todo);
   }
 
@@ -40,6 +39,7 @@ export class TodoService {
     return this.http.get(this.todoUrl)
     .map(res  => {
       // Maps the response object sent from the server
+      console.log(res['data']);
       return res['data'];
     });
   }
