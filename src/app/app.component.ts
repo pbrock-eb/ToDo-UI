@@ -23,7 +23,7 @@ export class AppComponent implements OnInit {
   public newTodo: ToDo = new ToDo();
   public newUser: User = new User();
   title = 'app';
-  todosList: ToDo[];
+  todosList = new Array();
   editTodos: ToDo[] = [];
   userList: User[];
   editUsers: User[] = [];
@@ -36,6 +36,7 @@ export class AppComponent implements OnInit {
         this.todosList = todos;
         this.isShowingTodos = true;
       });
+      console.log(this.todosList);
       this.userService.getUsers()
       .subscribe(users => {
         this.userList = users;
@@ -61,6 +62,7 @@ export class AppComponent implements OnInit {
     console.log(this.newTodo);
     this.todoService.createTodo(this.newTodo)
       .subscribe((res) => {
+        console.log(this.todosList);
         this.todosList.push(res.data);
         this.newTodo = new ToDo();
       });

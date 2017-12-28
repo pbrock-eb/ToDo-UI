@@ -37,11 +37,10 @@ export class TodoService {
 
   // Read todo, takes no arguments
   getToDos(): Observable<ToDo[]> {
-    console.log(ToDo.length);
     return this.http.get(this.todoUrl)
     .map(res  => {
       // Maps the response object sent from the server
-      return res['data'].docs as ToDo[];
+      return res['data'];
     });
   }
 
