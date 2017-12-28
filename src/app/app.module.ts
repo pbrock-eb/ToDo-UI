@@ -16,7 +16,9 @@ import {
   MatInputModule,
   MatFormFieldModule,
   MatSelectModule,
-  MatDialogModule
+  MatDialogModule,
+  MatDatepickerModule,
+  MatNativeDateModule
 } from '@angular/material';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
@@ -42,6 +44,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     NoopAnimationsModule,
     MatSelectModule,
     MatDialogModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     NgbModule.forRoot()
   ],
   providers: [
