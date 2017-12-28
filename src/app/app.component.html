@@ -62,10 +62,10 @@
                   </option>
                 </select> -->
                 <mat-form-field>
-                    <input matInput [matDatepicker]="dateDue" name="dateDue" id="dateDue" [(ngModel)]="newTodo.dateDue" placeholder="Due Date">
-                    <mat-datepicker-toggle matSuffix [for]="dateDue"></mat-datepicker-toggle>
-                    <mat-datepicker #dateDue></mat-datepicker>
-                  </mat-form-field>
+                  <input matInput [matDatepicker]="dateDue" name="dateDue" id="dateDue" [(ngModel)]="newTodo.dateDue" placeholder="Due Date">
+                  <mat-datepicker-toggle matSuffix [for]="dateDue"></mat-datepicker-toggle>
+                  <mat-datepicker #dateDue></mat-datepicker>
+                </mat-form-field>
               <div class="col-md-2"><button mat-raised-button type="submit" class="mat-button" (click)="createToDo()">Add</button></div>
             </div>
           </form>
@@ -106,9 +106,11 @@
                 </mat-form-field>
               </div>
               <div mat-line>
-                <mat-form-field>
-                <input matInput type="dateDue" name="dateDue" id="dateDue" (keypress)="submitTodo($event, todo)" [(ngModel)]="todo.dateDue" placeholder="Date Due" />
-                </mat-form-field>
+                  <mat-form-field>
+                    <input matInput [matDatepicker]="dateDue" name="dateDue" id="dateDue" [(ngModel)]="todo.dateDue" placeholder="Due Date">
+                    <mat-datepicker-toggle matSuffix [for]="dateDue"></mat-datepicker-toggle>
+                    <mat-datepicker #dateDue></mat-datepicker>
+                  </mat-form-field>
               </div>
               <div mat-line><button mat-raised-button (click)="editTodo(todo)">Submit</button></div>
             </mat-list-item>
