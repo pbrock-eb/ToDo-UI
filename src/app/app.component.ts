@@ -109,7 +109,6 @@ export class AppComponent implements OnInit {
   }
 
   deleteTodo(todo: ToDo) {
-    console.log('todoID: ' + todo.id);
     this.todoService.deleteTodo(todo.id).subscribe(res => {
       this.todosList.splice(this.todosList.indexOf(todo), 1);
     });
@@ -144,7 +143,6 @@ export class AppComponent implements OnInit {
   }
 
   editUser(user: User) {
-    console.log(user);
     if (this.userList.includes(user)) {
       if (!this.editUsers.includes(user)) {
         this.editUsers.push(user);
@@ -160,7 +158,7 @@ export class AppComponent implements OnInit {
     }
   }
   deleteUser(user: User) {
-    this.userService.deleteUser(user._id).subscribe(res => {
+    this.userService.deleteUser(user.id).subscribe(res => {
       this.userList.splice(this.userList.indexOf(user), 1);
     });
   }

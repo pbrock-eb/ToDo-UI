@@ -1,5 +1,5 @@
 class User {
-    _id: string;
+    id: string;
     fName: string;
     lName: string;
     dateCreated: Date;
@@ -9,6 +9,7 @@ class User {
         this.fName = '';
         this.lName = '';
         this.dateCreated = new Date();
+        this.id = '';
     }
 
 }
