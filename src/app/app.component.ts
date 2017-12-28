@@ -109,7 +109,8 @@ export class AppComponent implements OnInit {
   }
 
   deleteTodo(todo: ToDo) {
-    this.todoService.deleteTodo(todo._id).subscribe(res => {
+    console.log('todoID: ' + todo.id);
+    this.todoService.deleteTodo(todo.id).subscribe(res => {
       this.todosList.splice(this.todosList.indexOf(todo), 1);
     });
   }

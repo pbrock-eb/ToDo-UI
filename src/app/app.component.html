@@ -78,7 +78,7 @@
           <mat-list-item *ngIf="!editTodos.includes(todo); else editTD">
             <mat-icon mat-list-icon>description</mat-icon>
             <h3 mat-line>{{todo.title}}</h3>
-            <p mat-line>Added {{todo.dateCreated}}</p>
+            <p mat-line>Added: {{todo.dateCreated}}</p>
             <!-- <p mat-line >Asigned to: {{todo.user.fName}} {{todo.user.lName}}</p> -->
             <p mat-line>{{todo.description}}</p>
             <p mat-line>Date Due: {{todo.dateDue}}</p>
