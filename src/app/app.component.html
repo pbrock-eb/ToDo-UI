@@ -5,7 +5,7 @@
       <button mat-raised-button color="primary" id="showTodoButton" (click)="showTodos()">ToDos</button>
       <button mat-raised-button id="userButton" id="showUserButton" (click)="showUsers()">Users</button>
     </div>
-    <div class="users" *ngIf="userList && isShowingUsers">
+    <div class="users" *ngIf="isShowingUsers">
         <mat-card>
             <mat-card-header>
               <mat-card-title>Add a new User</mat-card-title>
@@ -34,7 +34,7 @@
             </mat-list-item>
           </mat-list>
     </div>
-    <div class="todos">
+    <div class="todos" *ngIf="isShowingTodos">
       
       <mat-card>
         <mat-card-header>
@@ -78,7 +78,7 @@
           <mat-list-item *ngIf="!editTodos.includes(todo); else editTD">
             <mat-icon mat-list-icon>description</mat-icon>
             <h3 mat-line>{{todo.title}}</h3>
-            <p mat-line>Added: {{todo.dateCreated}}</p>
+            <p mat-line>Added: {{todo.dateCreated | date:'MM/dd/yyyy'}}</p>
             <!-- <p mat-line >Asigned to: {{todo.user.fName}} {{todo.user.lName}}</p> -->
             <p mat-line>{{todo.description}}</p>
             <p mat-line>Date Due: {{todo.dateDue}}</p>
@@ -120,10 +120,11 @@
         <mat-list-item *ngFor="let todo of todosList | todoFilter: 'status' : 'Complete'; let i=index">
           <mat-icon mat-list-icon>description</mat-icon>
           <h3 mat-line>{{todo.title}}</h3>
-          <p mat-line> Added {{todo.date | date}}: {{todo.description}}</p>
+          <p mat-line>Added: {{todo.dateCreated | date:'MM/dd/yyyy'}}</p>
+          <p mat-line>{{todo.description}}</p>
           <p mat-line>Date Due: {{todo.dateDue}}</p>
           <div class="list-action-row" mat-line>
-            <button mat-button class="mat-button" (click)="undoTodo(todo)">Incomplete</button>
+            <button mat-raised-button class="mat-button" (click)="undoTodo(todo)">Incomplete</button>
           </div>
         </mat-list-item>
       </mat-list>
