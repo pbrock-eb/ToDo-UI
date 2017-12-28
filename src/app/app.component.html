@@ -73,7 +73,7 @@
       <mat-list>
         <h2 mat-subheader>To Do</h2>
 
-        <ng-container ngProjectAs="mat-list-item" *ngFor="let todo of todosList; let i=index">
+        <ng-container ngProjectAs="mat-list-item" *ngFor="let todo of todosList | todoFilter: 'status' : 'Incomplete'; let i=index">
 
           <mat-list-item *ngIf="!editTodos.includes(todo); else editTD">
             <mat-icon mat-list-icon>description</mat-icon>
