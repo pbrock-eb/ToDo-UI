@@ -98,7 +98,7 @@
               <div mat-line>
                 <mat-form-field>
                     <mat-select placeholder="User" name="user" id="user" [(ngModel)]="todo.user" >
-                      <mat-option *ngFor="let user of userList" [value]="user">
+                      <mat-option *ngFor="let user of userList" [value]="todo.user">
                         {{todo.user.fName}}  {{todo.user.lName}}
                       </mat-option>
                     </mat-select>
