@@ -28,8 +28,8 @@
               <h2 mat-subheader>Users</h2>
             <mat-list-item *ngFor="let user of userList">
               <mat-icon mat-list-icon>description</mat-icon>
-              <h3 mat-line>{{user.fName}} {{user.lName}}</h3>
-              <p mat-line>Added: {{user.dateCreated | date:'MM/dd/yyyy'}}</p>
+              <h3 class="user-headline" mat-line>{{user.fName}} {{user.lName}}</h3>
+              <p class="user-addedDate" mat-line>Added: {{user.dateCreated | date:'MM/dd/yyyy'}}</p>
               <button mat-raised-button type="submit" class="mat-button" (click)="deleteUser(user)">Delete</button>
             </mat-list-item>
           </mat-list>
@@ -74,12 +74,12 @@
 
           <mat-list-item *ngIf="!editTodos.includes(todo); else editTD">
             <mat-icon mat-list-icon>description</mat-icon>
-            <h3 mat-line>{{todo.title}}</h3>
-            <p mat-line>Added: {{todo.dateCreated | date:'MM/dd/yyyy'}}</p>
-            <p mat-line >Assigned to: {{todo.user.fName}} {{todo.user.lName}}</p>
+            <h3 class="todo-headline" mat-line>{{todo.title}}</h3>
+            <p class="todo-addedDate" mat-line>Added: {{todo.dateCreated | date:'MM/dd/yyyy'}}</p>
+            <p class="todo-assignedUser" mat-line >Assigned to: {{todo.user.fName}} {{todo.user.lName}}</p>
             <p mat-line>{{todo.description}}</p>
             <p mat-line>Date Due: {{todo.dateDue | date:'MM/dd/yyyy'}}</p>
-            <div class="list-action-row" mat-line>
+            <div class="todo-actionRow" mat-line>
               <button mat-raised-button class="mat-button" (click)="doneTodo(todo)">Complete</button>
               <button mat-raised-button (click)="editTodo(todo)">Edit</button>
               <button mat-raised-button (click)="deleteTodo(todo)">Delete</button>
@@ -127,11 +127,11 @@
         <h2 mat-subheader>Completed</h2>
         <mat-list-item *ngFor="let todo of todosList | todoFilter: 'status' : 'Complete'; let i=index">
           <mat-icon mat-list-icon>description</mat-icon>
-          <h3 mat-line>{{todo.title}}</h3>
-          <p mat-line>Added: {{todo.dateCreated | date:'MM/dd/yyyy'}}</p>
-          <p mat-line>{{todo.description}}</p>
+          <h3 class="todo-headline" mat-line>{{todo.title}}</h3>
+          <p class="todo-addedDate" mat-line>Added: {{todo.dateCreated | date:'MM/dd/yyyy'}}</p>
+          <p class="todo-assignedUser" mat-line>{{todo.description}}</p>
           <p mat-line>Date Due: {{todo.dateDue | date:'MM/dd/yyyy'}}</p>
-          <div class="list-action-row" mat-line>
+          <div class="todo-actionRow" mat-line>
             <button mat-raised-button class="mat-button" (click)="undoTodo(todo)">Incomplete</button>
           </div>
         </mat-list-item>
