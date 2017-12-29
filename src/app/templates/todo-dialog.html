@@ -14,7 +14,7 @@
         <div mat-line>
             <mat-form-field>
                 <mat-select placeholder="User" name="user" id="user" [(ngModel)]="data.todo.user" >
-                    <mat-option *ngFor="let user of data.userList" [value]="user">
+                    <mat-option *ngFor="let user of userList" [value]="data.todo.user">
                     {{data.todo.user.fName}}  {{data.todo.user.lName}}
                     </mat-option>
                 </mat-select>

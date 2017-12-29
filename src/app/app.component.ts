@@ -177,13 +177,23 @@ export class AppComponent implements OnInit {
   selector: 'app-todo-dialog',
   templateUrl: './templates/todo-dialog.html'
 })
-export class TodoDialogComponent {
+
+export class TodoDialogComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<TodoDialogComponent>,
     private todoService: TodoService,
     private userService: UserService,
     @Inject(MAT_DIALOG_DATA) public data: any) { }
+    todosList = new Array();
+    userList = new Array();
+
+    ngOnInit(): void {
+        this.userService.getUsers()
+        .subscribe(users => {
+          this.userList = users;
+        });
+    }
     onNoClick(): void {
       this.dialogRef.close();
     }
