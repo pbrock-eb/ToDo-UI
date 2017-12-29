@@ -8,7 +8,6 @@ import { AppComponent, TodoDialogComponent } from './app.component';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {
   MatButtonModule,
-  MatMenuModule,
   MatToolbarModule,
   MatIconModule,
   MatCardModule,
@@ -35,7 +34,6 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     HttpClientModule,
     MatButtonModule,
     MatFormFieldModule,
-    MatMenuModule,
     MatToolbarModule,
     MatIconModule,
     MatCardModule,
