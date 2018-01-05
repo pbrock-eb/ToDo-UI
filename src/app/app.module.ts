@@ -2,6 +2,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TodoService, ToDoFilterPipe } from './services/todo.service';
 import { UserService} from './services/user.service';
+import { BeerService } from './services/beer.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
